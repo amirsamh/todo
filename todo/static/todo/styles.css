@@ -1,0 +1,190 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+select {
+    margin-top: 20px;
+}
+
+body {
+    overflow: scroll;
+    background-color: var(--bs-tertiary-bg);
+}
+
+label {
+    font-weight: 600;
+}
+
+button:not(#new-submit, #new-list-submit, #search) {
+    margin-bottom: 10px;
+}
+
+.button-list {
+    display: inline-flex;
+}
+
+.search-result-description {
+    color: grey;
+}
+
+.submit {
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 40px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: 700;
+    font-family: 'PT Serif', serif;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.material-symbols-outlined {
+    vertical-align: bottom;
+}
+
+.nav-item {
+    font-weight: 700;
+}
+
+.fill {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
+
+.outline {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
+
+.info {
+    margin-top: 20px;
+}
+
+#welcome-title {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 50px;
+    font-family: 'PT Serif', serif;
+}
+
+.welcome-btn {
+    font-weight: 500;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.welcome-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-text {
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    font-weight: 400;
+    font-family: 'PT Serif', serif;
+}
+
+.big-icon {
+    font-size: 100px;
+}
+
+.empty {
+    text-align: center;
+    color: #ced4da;
+}
+
+.empty-description {
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#new-task, #new-task-description, #new-text-submit, #new-list-select {
+    vertical-align: center;
+    background-color: #e9ecef;
+}
+
+#new-submit, #new-list-submit {
+    margin-left: 10px;
+}
+
+p {
+    margin-left: 10px;
+}
+
+s {
+    color: gray;    
+}
+
+.form-check-input:hover {
+    cursor: pointer;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+.task-item-description {
+    font-weight: 400;
+    margin-left: 24px;
+    color: grey;
+}
+
+.task-item-important {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.unimportant {
+    cursor: pointer;
+    user-select: none;
+}
+
+.important {
+    color: var(--bs-warning);
+    cursor: pointer;
+    user-select: none;
+}
+
+.important:hover {
+    color: #cc9a06;
+}
+
+.unselectable {
+    user-select: none;
+}
+
+.task-link {
+    all: unset;
+    cursor: pointer;
+}
+
+.btn-warning, .btn-warning:hover, .btn-warning:active {
+    color: white;
+}
+
+.delete:hover {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    color: var(--bs-danger);
+}
+
+.more, .delete {
+    cursor: pointer;
+    user-select: none;
+}
+
+label {
+    margin: 10px;
+}

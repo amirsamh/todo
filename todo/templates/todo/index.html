@@ -1,0 +1,88 @@
+{% extends "todo/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'todo/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+{% if not user.is_authenticated %}
+    <h1 id="welcome-title" class="">Welcome to To Do!</h1>
+    <h2 class="welcome-text">A To-Do List for organizing your work and life.</h2>
+    <div class="welcome-btns">
+        <a class="btn btn-success rounded-3 shadow-sm welcome-btn" href="{% url 'register' %}">
+            Register
+            <span class="material-symbols-outlined fill">
+                person_add
+            </span>
+        </a>
+        <a class="btn btn-primary rounded-3 shadow-sm welcome-btn" href="{% url 'login' %}">
+            Login
+            <span class="material-symbols-outlined">
+                login
+            </span>
+        </a>
+    </div>
+{% else %}
+    <h1 class="title" id="list-title"></h1>
+    <button class="btn btn-outline-secondary rounded-3 shadow-sm list-btn" data-list="All" id="All-btn">All</button>
+    <button class="btn btn-outline-primary rounded-3 shadow-sm list-btn" data-list="Tasks" id="Tasks-btn">Tasks</button>
+    <button class="btn btn-outline-success rounded-3 shadow-sm list-btn" data-list="Done" id="Done-btn">Done</button>
+    <button class="btn btn-outline-warning rounded-3 shadow-sm list-btn" data-list="Important" id="Important-btn">Important</button>
+    <button class="btn btn-outline-primary rounded-3 shadow-sm" data-list="Important" id="lists-btn">My Lists</button>
+
+    <form method="post" id="new-form">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input autocomplete="off" type="text" class="form-control rounded-4 shadow-sm" placeholder="New Task..." aria-label="Recipient's username" aria-describedby="button-addon2" id="new-task" name="text">
+            <button class="btn btn-primary rounded-4 btn-sm shadow-sm" type="submit" id="new-submit">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </button>
+          </div>
+        <textarea class="form-control rounded-4 shadow-sm" id="new-task-description" rows="3" placeholder="Description" name="description"></textarea>
+        <select name="list" class="form-select shadow-sm rounded-4" id="new-list-select">
+            <option selected>No list selected</option>
+            {% for list in lists %}
+                <option value="{{ list.id }}">{{ list.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <form method="post" id="new-list-form">
+        <div class="input-group mb-3">
+            <input autocomplete="off" type="text" class="form-control rounded-4 shadow-sm" placeholder="New List" id="new-text-submit" name="name">
+            <button class="btn btn-primary rounded-4 btn-sm shadow-sm" id="new-list-submit" type="submit">
+                <span class="material-symbols-outlined">
+                    playlist_add
+                </span>
+            </button>
+          </div>
+    </form>
+    <div class="container empty" id="empty-inbox">
+        <span class="material-symbols-outlined big-icon unselectable">
+            folder_open
+        </span>
+        <br>
+        <div class="empty-description">This folder is empty.</div>
+    </div>
+    <div>
+        <ul class="list-group rounded-3 shadow-sm list" id="All"></ul>
+        </ul>
+        <ul class="list-group rounded-3 shadow-sm list" id="Tasks"></ul>
+        </ul>
+        <ul class="list-group rounded-3 shadow-sm list" id="Done"></ul>
+        </ul>
+        <ul class="list-group rounded-3 shadow-sm list" id="Important"></ul>
+        </ul>
+        <ul class="list-group rounded-3 shadow-sm list" id="Lists">
+        </ul>
+        {% for list in lists %}
+        <ul class="list-group rounded-3 shadow-sm list" id="{{ list.name }}"></ul>
+        </ul>
+        {% endfor %}
+    </div>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "todo/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<h2 class="title">Register</h2>
+<div class="mb-3 container">
+    <form method="post">
+        {% csrf_token %}
+        <label for="basic-url" class="form-label">Email</label>
+        <div class="input-group">
+        <input name="email" autofocus type="text" class="form-control rounded-4 shadow-sm" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+        </div>
+        <label for="basic-url" class="form-label">Username</label>
+        <div class="input-group">
+        <input name="username" type="text" class="form-control rounded-4 shadow-sm" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+        </div>
+        <label for="basic-url" class="form-label">Password</label>
+        <div class="input-group">
+        <input name="password" type="password" class="form-control rounded-4 shadow-sm" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+        </div>
+        <label for="basic-url" class="form-label">Password Confirmation</label>
+        <div class="input-group">
+        <input name="confirmation" type="password" class="form-control rounded-4 shadow-sm" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+        </div>
+        <button class="btn btn-primary rounded-4 shadow-sm submit" type="submit">Register
+            <span class="material-symbols-outlined">
+                arrow_forward
+            </span>
+        </button>
+    </form>
+    <p class="info">
+        <span class="material-symbols-outlined">
+            help
+        </span>
+        Already have an account? <a href="{% url 'login' %}">Login here.</a>
+    </p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "todo/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'todo/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <a href="{% url 'index' %}" class="btn btn-light rounded-5">
+        <span class="material-symbols-outlined">
+            arrow_back
+        </span>
+        Back
+    </a>
+    <h2 class="title">Search results for "{{ title }}"</h2>
+    <ul class="list-group rounded-3 shadow-sm list" id="{{ list.name }}">
+    {% for result in results %}
+        <a href="task/{{ result.id }}" class="list-group-item">
+            <div class="task-item-text">
+                {{ result.text }}
+                <div class="search-result-description">{{ result.description }}</div>
+            </div>
+        </a>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

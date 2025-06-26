@@ -1,0 +1,80 @@
+{% extends "todo/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'todo/task.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <a href="{% url 'index' %}" class="btn btn-light rounded-5">
+            <span class="material-symbols-outlined">
+                arrow_back
+            </span>
+            Back
+        </a>
+        <div>
+            <h2 class="title" id="title">{{ data.text }}</h2>
+            <div id="text" data-value="{{ data.text }}"></div>
+        </div>
+        <hr>
+        {% if data.description %}
+        <div id="description" data-value="{{ data.description }}">
+            {{ data.description }}
+        </div>
+        {% else %}
+        <div>
+            <div id="description" data-value="{{ data.description }}"></div>
+            <div id="empty-description">No Description</div>
+        </div>
+        {% endif %}
+        <div id="list">
+            <select name="list" class="form-select shadow-sm rounded-4" id="list-name">
+                <option selected>No list selected</option>
+                {% for list in lists %}
+                    <option value="{{ list.id }}">{{ list.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div id="buttons">
+            <button class="btn btn-light rounded-5" id="edit">
+                <span class="material-symbols-outlined fill text-primary">
+                    edit
+                </span>
+                Edit
+            </button>
+            <form action="{% url 'delete' task_id=data.id %}">
+                <button class="btn btn-light rounded-5">
+                    <span class="material-symbols-outlined fill text-danger">
+                        delete
+                    </span>
+                    Delete
+                </button>
+            </form>
+            {% if data.important == False %}
+            <button class="btn btn-light rounded-5" id="unimportant">
+                <span class="material-symbols-outlined">
+                    star
+                </span>
+                Mark as important
+            </button>
+            {% else %}
+            <button class="btn btn-light rounded-5" id="important">
+                <span class="material-symbols-outlined fill text-warning">
+                    star
+                </span>
+                Remove importance
+            </button>
+            {% endif %}
+            <br>
+            <button class="btn btn-light rounded-5">
+                <span class="material-symbols-outlined text-primary">
+                    format_list_bulleted
+                </span>
+                {{ data.list }}
+            </button>
+        </div>
+        <div id="additionals"></div>
+    </div>
+{% endblock %}
