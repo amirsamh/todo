@@ -35,13 +35,18 @@ Visit https://amirsamh.pythonanywhere.com to use the web application.
 git clone https://github.com/amirsamh/todo.git
 cd todo
 ```
-### 2. Migrate the database
+### 2. Install requirements
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Migrate the database
 ```bash
 python manage.py makemigrations todo
 python manage.py migrate
 ```
 
-### 3. Run on localhost
+### 4. Run on localhost
 ```bash
 python manage.py runserver
 ```
